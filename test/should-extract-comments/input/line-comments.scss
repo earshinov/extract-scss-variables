@@ -1,0 +1,11 @@
+//
+// File header
+//
+
+// Default background color
+$defaultBackgroundColor: white !default;
+
+// General styles
+body {
+    background-color: $defaultBackgroundColor;
+}

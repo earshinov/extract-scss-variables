@@ -1,0 +1,43 @@
+{
+  "name": "@earshinov/extract-scss-variables",
+  "description": "Extract SCSS variables, functions and mixins into a separate file",
+  "keywords": ["scss"],
+  "version": "0.1.0",
+  "author": "Evgeny Arshinov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/earshinov/extract-scss-variables.git"
+  },
+  "main": "dist/index.js",
+  "bin": {
+    "extract-scss-variables": "bin/extract-scss-variables.js"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest",
+    "lint": "eslint .",
+    "prepublish": "yarn run lint && yarn run test && yarn run build"
+  },
+  "dependencies": {
+    "fs-extra": "^8.0.1",
+    "postcss": "^7.0.17",
+    "postcss-scss": "^2.0.0",
+    "tmp": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "jest": "^24.8.0",
+    "jest-expect-message": "^1.0.2",
+    "rollup": "^1.15.0"
+  },
+  "engines": {
+    "node": ">= 8"
+  },
+  "files": [
+    "package.json",
+    "dist/index.js",
+    "bin/extract-scss-variables.js"
+  ]
+}

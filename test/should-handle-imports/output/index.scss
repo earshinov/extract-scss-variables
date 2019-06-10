@@ -1,0 +1,10 @@
+// Import without extension
+@import './import-without-extension';
+
+// Import with extension
+@import './import-scss.scss';
+@import './import-css.css';
+
+// Absolute import (should be ignored)
+@import 'absolute-import';
+@import 'absolute-import.scss';
