@@ -1,7 +1,9 @@
 {
   "name": "@earshinov/extract-scss-variables",
   "description": "Extract SCSS variables, functions and mixins into a separate file",
-  "keywords": ["scss"],
+  "keywords": [
+    "scss"
+  ],
   "version": "0.1.0",
   "author": "Evgeny Arshinov",
   "license": "MIT",
@@ -28,6 +30,7 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "eslint": "^5.16.0",
     "jest": "^24.8.0",
     "jest-expect-message": "^1.0.2",
     "rollup": "^1.15.0"
