@@ -12,10 +12,10 @@ Even so, it seems hard to setup, especially if node-sass is being used as part o
 
 ## Usage
 
-- `yarn install --dev extract-scss-variables`
+- `yarn install --dev @earshinov/extract-scss-variables`
 - `yarn run extract-scss-variables source.scss variables.scss`
 
-Will extract variables, functions and mixins from `source.scss` and its imported files into `variables.scss`.
+The last command will extract variables, functions and mixins from `source.scss` and its imported files into `variables.scss`.
 
 ## Development
 
@@ -23,7 +23,7 @@ Will extract variables, functions and mixins from `source.scss` and its imported
 - To lint the code with [ESLint](https://eslint.org/), run `yarn run lint`
 - To test the code with [Jest](https://jestjs.io/), run `yarn run test`
 - To build NPM package, run `yarn run build`
-- To publish NPM package, run `yarn publish`.  The code will be linted, tested and built automatically before publication.
+- To publish NPM package, run `yarn publish --access public`.  The code will be linted, tested and built automatically before publication.
 
 ## Useful Links
 
