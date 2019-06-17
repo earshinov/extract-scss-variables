@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { extractScssVariables } = require('../dist');
 
 const USAGE = `
