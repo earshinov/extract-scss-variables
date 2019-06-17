@@ -20,10 +20,11 @@ jobs:
       - "10"
       - "node"
       - "lts"
-    script: yarn run test
-    after_success:
-    - yarn add -g codacy-coverage
-    - codacy-coverage < coverage/lcov.info
+    script:
+      - yarn run test
+      - yarn global add codacy-coverage
+      - export PATH="$PATH:$(yarn global bin)"
+      - codacy-coverage < coverage/lcov.info
 
   - name: build
     stage: test
