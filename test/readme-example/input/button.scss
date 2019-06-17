@@ -1,0 +1,11 @@
+$buttonBackgroundColor: #e0e0e0;
+$buttonColor: black;
+$buttonBorderRadius: 4px;
+
+button, input[type=button], input[type=submit] {
+    @include defaultFont;
+    appearance: none;
+    background-color: $buttonBackgroundColor;
+    color: $buttonColor;
+    border-radius: $buttonBorderRadius;
+}

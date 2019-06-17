@@ -1,0 +1,9 @@
+@import './variables';
+
+button, input[type=button], input[type=submit] {
+    @include defaultFont;
+    appearance: none;
+    background-color: $buttonBackgroundColor;
+    color: $buttonColor;
+    border-radius: $buttonBorderRadius;
+}

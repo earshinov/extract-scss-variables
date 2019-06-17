@@ -69,3 +69,7 @@ test('Different target folder', () => {
     expect(tempDir).toMatchOnFileSystem(`./${testFolder}/output`);
     removeCallback();
 });
+
+test('Readme example', () => {
+    runTestOnFileSystem('readme-example');
+});

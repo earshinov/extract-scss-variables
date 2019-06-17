@@ -1,0 +1,6 @@
+@mixin defaultFont() {
+    font-family: Rubik;
+    font-weight: normal;
+}
+
+@import './button';

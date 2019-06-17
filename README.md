@@ -13,9 +13,70 @@ Even so, it seems hard to setup, especially if node-sass is being used as part o
 ## Usage
 
 - `yarn install --dev @earshinov/extract-scss-variables`
-- `yarn run extract-scss-variables source.scss variables.scss`
+- `yarn run extract-scss-variables index.scss variables.scss`
 
-The last command will extract variables, functions and mixins from `source.scss` and its imported files into `variables.scss`.
+The last command will extract variables, functions and mixins from `index.scss` and its imported files into `variables.scss`.
+
+Example input:
+
+_index.scss_:
+```scss
+@mixin defaultFont() {
+    font-family: Rubik;
+    font-weight: normal;
+}
+
+@import './button';
+```
+
+_button.scss_:
+```scss
+$buttonBackgroundColor: #e0e0e0;
+$buttonColor: black;
+$buttonBorderRadius: 4px;
+
+button, input[type=button], input[type=submit] {
+    @include defaultFont;
+    appearance: none;
+    background-color: $buttonBackgroundColor;
+    color: $buttonColor;
+    border-radius: $buttonBorderRadius;
+}
+```
+
+Example output:
+
+_index.scss_:
+```scss
+@import './variables';
+
+@import './button';
+```
+
+_button.scss_:
+```scss
+@import './variables';
+
+button, input[type=button], input[type=submit] {
+    @include defaultFont;
+    appearance: none;
+    background-color: $buttonBackgroundColor;
+    color: $buttonColor;
+    border-radius: $buttonBorderRadius;
+}
+```
+
+_variables.scss_:
+```scss
+@mixin defaultFont() {
+    font-family: Rubik;
+    font-weight: normal;
+}
+
+$buttonBackgroundColor: #e0e0e0;
+$buttonColor: black;
+$buttonBorderRadius: 4px;
+```
 
 ## Development
 
