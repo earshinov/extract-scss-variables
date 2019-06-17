@@ -1,0 +1,105 @@
+= @earshinov/extract-scss-variables
+:nofooter:
+
+Extract SCSS variables, functions and mixins into a separate file.
+
+== Motivation
+
+LESS provides http://lesscss.org/features/#import-atrules-feature-reference[reference imports] to only import things like variables and mixins from the given file without affecting the compiled CSS: `@import (reference) "foo.less"`.
+
+In SCSS the same effect can be achieved by using https://github.com/sass/node-sass#importer--v200---experimental[node-sass custom importers] like https://github.com/maoberlehner/node-sass-magic-importer/tree/master/packages/node-sass-filter-importer[node-sass-filter-importer] with its `@import '[variables, mixins] from style.scss';`.
+
+Even so, it seems hard to setup, especially if node-sass is being used as part of Webpack or @angular/cli build process.  In many cases you will find it more convenient to extract variables, functions etc. from the file you are interested in into a separate file and import that file normally.  That's what this little tool is for.
+
+== Usage
+
+- `yarn install --dev @earshinov/extract-scss-variables`
+- `yarn run extract-scss-variables index.scss variables.scss`
+
+The last command will extract variables, functions and mixins from `index.scss` and its imported files into `variables.scss`.
+
+Example input:
+
+.index.scss
+[source,scss]
+----
+@mixin defaultFont() {
+    font-family: Rubik;
+    font-weight: normal;
+}
+
+@import './button';
+----
+
+.button.scss
+[source,scss]
+----
+$buttonBackgroundColor: #e0e0e0;
+$buttonColor: black;
+$buttonBorderRadius: 4px;
+
+button, input[type=button], input[type=submit] {
+    @include defaultFont;
+    appearance: none;
+    background-color: $buttonBackgroundColor;
+    color: $buttonColor;
+    border-radius: $buttonBorderRadius;
+}
+----
+
+Example output:
+
+.index.scss:
+[source,scss]
+----
+@import './variables';
+
+@import './button';
+----
+
+.button.scss:
+[source,scss]
+----
+@import './variables';
+
+button, input[type=button], input[type=submit] {
+    @include defaultFont;
+    appearance: none;
+    background-color: $buttonBackgroundColor;
+    color: $buttonColor;
+    border-radius: $buttonBorderRadius;
+}
+----
+
+.variables.scss
+[source,scss]
+----
+@mixin defaultFont() {
+    font-family: Rubik;
+    font-weight: normal;
+}
+
+$buttonBackgroundColor: #e0e0e0;
+$buttonColor: black;
+$buttonBorderRadius: 4px;
+----
+
+== Development
+
+- To install dependencies and run commands, use https://yarnpkg.com/[Yarn] rather than `npm`
+- To lint the code with https://eslint.org/[ESLint], run `yarn run lint`
+- To test the code with https://jestjs.io/[Jest], run `yarn run test`
+- To build NPM package, run `yarn run build`
+- To publish NPM package, run `yarn run publish --access public`.  The code will be linted, tested and built automatically before publication.
+
+== Useful Links
+
+Inspired by
+
+- https://github.com/maoberlehner/node-sass-magic-importer/tree/master/packages/node-sass-filter-importer[node-sass-filter-importer]
+- https://github.com/maoberlehner/css-node-extract/[css-node-extract]
+
+SCSS manipulation is implemented using https://postcss.org/[PostCSS]:
+
+- http://api.postcss.org/[API documentation]
+- https://astexplorer.net/[AST explorer] (In the top menu, select **CSS** and **postcss**.  In postcss options, select **scss** parser.)
