@@ -95,7 +95,7 @@ $buttonBorderRadius: 4px;
 - To lint the code with https://eslint.org/[ESLint], run `yarn run lint`
 - To test the code with https://jestjs.io/[Jest], run `yarn run test`
 - To build NPM package, run `yarn run build`
-- To publish NPM package, run `yarn run publish --access public`.  The code will be linted, tested and built automatically before publication.
+- To publish NPM package, run `yarn run publish --access public`.  It is important to use `yarn *run* publish` instead of `yarn publish` to lint, test and build the code before publication.  If you are wondering why the `prepublish` script is not used for this purpose, https://github.com/yarnpkg/yarn/issues/3209[here is the reason].
 
 == Useful Links
 

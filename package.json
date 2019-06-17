@@ -19,7 +19,7 @@
     "build": "rollup -c",
     "test": "jest",
     "lint": "eslint .",
-    "prepublish": "yarn run lint && yarn run test && yarn run build"
+    "publish": "yarn run lint && yarn run test && yarn run build && yarn publish"
   },
   "dependencies": {
     "fs-extra": "^8.0.1",
