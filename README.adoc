@@ -1,7 +1,7 @@
 = @earshinov/extract-scss-variables
 :nofooter:
 
-image:https://travis-ci.com/earshinov/extract-scss-variables.svg?branch=develop[Build Status, link=https://travis-ci.com/earshinov/extract-scss-variables]
+image:https://travis-ci.org/earshinov/extract-scss-variables.svg[Build Status, link=https://travis-ci.org/earshinov/extract-scss-variables]
 image:https://api.codacy.com/project/badge/Coverage/6a8ecf0a9f5d4f3e8d7c7740285408db[Codacy Badge, link=https://www.codacy.com/app/earshinov/extract-scss-variables?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=earshinov/extract-scss-variables&amp;utm_campaign=Badge_Coverage]
 image:https://api.codacy.com/project/badge/Grade/6a8ecf0a9f5d4f3e8d7c7740285408db[Codacy Badge, link=https://www.codacy.com/app/earshinov/extract-scss-variables?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=earshinov/extract-scss-variables&amp;utm_campaign=Badge_Grade]
 image:https://img.shields.io/npm/v/@earshinov/extract-scss-variables.svg[NPM Version, link=https://www.npmjs.com/package/@earshinov/extract-scss-variables]
