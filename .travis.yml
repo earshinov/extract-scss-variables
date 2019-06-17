@@ -1,35 +1,55 @@
+language: node_js
+
 addons:
   chrome: stable
-
-language: node_js
 
 jobs:
   include:
 
-  - name: lint
-    stage: test
-    node_js:
-      - "10"
-      - "node"
-      - "lts"
+  - name: lint/node:10
+    node_js: "10"
     script: yarn run lint
 
-  - name: test
-    stage: test
-    node_js:
-      - "10"
-      - "node"
-      - "lts"
+  - name: test/node:10
+    node_js: "10"
     script:
       - yarn run test
       - yarn global add codacy-coverage
       - export PATH="$PATH:$(yarn global bin)"
       - codacy-coverage < coverage/lcov.info
 
-  - name: build
-    stage: test
-    node_js:
-      - "10"
-      - "node"
-      - "lts"
+  - name: build/node:10
+    node_js: "10"
+    script: yarn run build
+
+  - name: lint/node:lts
+    node_js: "lts/*"
+    script: yarn run lint
+
+  - name: test/node:lts
+    node_js: "lts/*"
+    script:
+      - yarn run test
+      #- yarn global add codacy-coverage
+      #- export PATH="$PATH:$(yarn global bin)"
+      #- codacy-coverage < coverage/lcov.info
+
+  - name: build/node:lts
+    node_js: "lts/*"
+    script: yarn run build
+
+  - name: lint/node:latest
+    node_js: "node"
+    script: yarn run lint
+
+  - name: test/node:latest
+    node_js: "node"
+    script:
+      - yarn run test
+      #- yarn global add codacy-coverage
+      #- export PATH="$PATH:$(yarn global bin)"
+      #- codacy-coverage < coverage/lcov.info
+
+  - name: build/node:latest
+    node_js: "node"
     script: yarn run build
