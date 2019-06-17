@@ -1,0 +1,34 @@
+addons:
+  chrome: stable
+
+language: node_js
+
+jobs:
+  include:
+
+  - name: lint
+    stage: test
+    node_js:
+      - "10"
+      - "node"
+      - "lts"
+    script: yarn run lint
+
+  - name: test
+    stage: test
+    node_js:
+      - "10"
+      - "node"
+      - "lts"
+    script: yarn run test
+    after_success:
+    - yarn add -g codacy-coverage
+    - codacy-coverage < coverage/lcov.info
+
+  - name: build
+    stage: test
+    node_js:
+      - "10"
+      - "node"
+      - "lts"
+    script: yarn run build
