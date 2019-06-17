@@ -6,6 +6,7 @@ import postcssScss from 'postcss-scss';
 
 import { convertToUnixSlashes } from './convert-to-unix-slashes';
 import { countofstr } from './countofstr';
+import { recurse } from './recurse';
 
 
 export function extractScssVariables(sourceFilename, variablesFilename) {
@@ -22,11 +23,12 @@ export function extractScssVariables(sourceFilename, variablesFilename) {
                 return;
 
             // Normalize line endings
-            for (const node of nodes) {
-                node.raws.before = normalizeLineEndings(node.raws.before);
-                node.raws.between = normalizeLineEndings(node.raws.between);
-                node.raws.after = normalizeLineEndings(node.raws.after);
-            }
+            for (const node of nodes)
+                recurseIntoNode(node, node => {
+                    node.raws.before = normalizeLineEndings(node.raws.before);
+                    node.raws.between = normalizeLineEndings(node.raws.between);
+                    node.raws.after = normalizeLineEndings(node.raws.after);
+                });
 
             const befores = nodes.map(node => node.raws.before);
 
@@ -221,3 +223,6 @@ function isHeadHelperNode(node) {
 function isTailHelperNode(node) {
     return node.type === 'comment' && node.text === 'TAIL';
 }
+
+
+const recurseIntoNode = recurse(node => node.nodes);
