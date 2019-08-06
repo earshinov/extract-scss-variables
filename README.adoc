@@ -76,7 +76,7 @@ button, input[type=button], input[type=submit] {
 }
 ----
 
-.variables.scss
+.variables.scss:
 [source,scss]
 ----
 @mixin defaultFont() {
